@@ -41,7 +41,7 @@ document.getElementById("authForm")
   const password = document.getElementById("password").value;
   const confirmPassword = document.getElementById("confirmPassword").value;
 
-  // -------- CREATE ACCOUNT MODE --------
+  // -------- Sign up  MODE --------
   if (isSignupMode) {
 
     if (password !== confirmPassword) {
@@ -55,16 +55,16 @@ document.getElementById("authForm")
         alert("Account created successfully");
         window.location.href = "dashboard.html";
       })
-      .catch(err=>{
+      .catch((error) => {
 
-        if (err.code === "auth/email-already-in-use") {
-          alert("Already account created, please login to continue");
-        } else {
-          alert("Unable to create account");
-        }
+  if (error.code === "auth/email-already-in-use") {
+    alert("Already account created, please login to continue");
+  } 
+  else {
+    alert("Signup failed");
+  }
 
-      });
-
+});
   }
 
   // -------- LOGIN MODE --------
@@ -76,19 +76,19 @@ document.getElementById("authForm")
         alert("Login successful");
         window.location.href = "dashboard.html";
       })
-      .catch(err=>{
+      .catch((error) => {
 
-        if (err.code === "auth/user-not-found") {
-          alert("Please create new account");
-        }
-        else if (err.code === "auth/wrong-password") {
-          alert("Invalid credentials");
-        }
-        else {
-          alert("Login failed");
-        }
+  if (error.code === "auth/user-not-found") {
+    alert("Please create new account");
+  } 
+  else if (error.code === "auth/wrong-password") {
+    alert("Invalid credentials");
+  } 
+  else {
+    alert("Login failed");
+  }
 
-      });
+});
 
   }
 
