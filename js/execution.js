@@ -11,7 +11,7 @@ document.getElementById("executionForm")
 
   const subject = document.getElementById("subject").value;
   const chapter = document.getElementById("chapter").value;
-  const minutes = document.getElementById("minutes").value;
+  const minutes = document.getElementById("time").value;
 
   db.collection("users")
     .doc(user.uid)
